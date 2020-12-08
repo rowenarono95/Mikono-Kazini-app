@@ -23,5 +23,15 @@ class Employee(models.Model):
 
     
     def __str__(self):
-        return self.user.username   
+        return self.user.username  
+
+     
+class Job(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    company_name = models.CharField(max_length=20)
+    job_title = models.CharField(max_length=20)
+    job_description = models.CharField(max_length=20)
+    job_requirements = models.CharField(max_length=20)
+    company_email = models.EmailField(max_length=255, unique=True)
+  
  
