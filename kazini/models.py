@@ -9,3 +9,8 @@ class User(AbstractUser):
     is_employee = models.BooleanField(default=False)
     is_employer = models.BooleanField(default=False)
     phone_number = models.CharField(max_length=20)
+
+
+
+class Employer(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE, primary_key = True)    
