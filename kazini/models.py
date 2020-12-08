@@ -2,6 +2,9 @@
  
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import cloudinary
+from cloudinary.models import CloudinaryField
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -33,5 +36,21 @@ class Job(models.Model):
     job_description = models.CharField(max_length=20)
     job_requirements = models.CharField(max_length=20)
     company_email = models.EmailField(max_length=255, unique=True)
+
+    
+class Profile (models.Model):
+    name = models.CharField(max_length=30)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    email = models.CharField(max_length=50)
+    status = models.BooleanField()
+    image = CloudinaryField('Profile pic', default = 'profile.jpg')
+    
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    def save_profile(self):
+        self.save
+    
+        
   
  

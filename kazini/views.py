@@ -29,5 +29,13 @@ class LoginAPI(KnoxLoginView):
         return super(LoginAPI, self).post(request, format=None)
 
 
+class ProfileViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing profile instances.
+    """
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+
+
 
 
